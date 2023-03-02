@@ -39,7 +39,6 @@ public class FoobarFile {
     }
 
     public void save() {
-        //TODO Save the file to disk
         try (var fileWriter = new FileWriter(this.fileObj.toString());
              var bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write(this.content);
@@ -52,4 +51,7 @@ public class FoobarFile {
         return new FoobarFileMemento(content);
     }
 
+    private void restoreMemento(FoobarFileMemento memento) {
+        this.content = memento.getContent();
+    }
 }
